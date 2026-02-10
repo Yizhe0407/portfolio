@@ -12,6 +12,7 @@ import {
   Sparkles,
   Target,
 } from "lucide-react";
+import type { Metadata } from "next";
 
 import PageDivider from "@/components/layout/PageDivider";
 import SectionContainer from "@/components/layout/SectionContainer";
@@ -24,6 +25,27 @@ import {
   resumeSkills,
 } from "@/data/resume";
 import { socialLinks } from "@/lib/social-links";
+import { siteConfig } from "@/lib/site";
+
+const description =
+  "View the resume of Liao Yizhe, a full-stack developer with experience in modern web development, systems, and collaboration.";
+
+export const metadata: Metadata = {
+  title: "Resume",
+  description,
+  alternates: {
+    canonical: "/resume",
+  },
+  openGraph: {
+    title: `Resume | ${siteConfig.name}`,
+    description,
+    url: "/resume",
+  },
+  twitter: {
+    title: `Resume | ${siteConfig.name}`,
+    description,
+  },
+};
 
 const selectedProjects =
   featuredProjects.length > 0 ? featuredProjects : projects.slice(0, 2);

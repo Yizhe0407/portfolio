@@ -6,6 +6,8 @@ import HeroCarousel from "@/components/sections/home/HeroCarousel";
 import LatestProjects from "@/components/sections/home/LatestProjects";
 import { socialLinks } from "@/lib/social-links";
 import { Pacifico } from "next/font/google";
+import { siteConfig } from "@/lib/site";
+import { resumeProfile } from "@/data/resume";
 
 const pacifico = Pacifico({
   weight: "400",
@@ -13,9 +15,27 @@ const pacifico = Pacifico({
   display: "swap",
 });
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: resumeProfile.name,
+  url: siteConfig.url,
+  jobTitle: resumeProfile.title,
+  description: siteConfig.description,
+  email: resumeProfile.email,
+  image: new URL(siteConfig.ogImage, siteConfig.url).toString(),
+  sameAs: socialLinks
+    .map((link) => link.href)
+    .filter((href) => href.startsWith("http")),
+};
+
 export default function Home() {
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
       <main className="relative pt-28">
         <PageDivider />
 

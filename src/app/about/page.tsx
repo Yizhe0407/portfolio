@@ -2,6 +2,28 @@ import PageDivider from "@/components/layout/PageDivider";
 import SectionContainer from "@/components/layout/SectionContainer";
 import { Award } from "lucide-react";
 import { contests } from "@/data/contests";
+import type { Metadata } from "next";
+import { siteConfig } from "@/lib/site";
+
+const description =
+  "Learn more about Liao Yizhe, a full-stack developer focused on building thoughtful web experiences and solving real-world problems.";
+
+export const metadata: Metadata = {
+  title: "About",
+  description,
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: `About | ${siteConfig.name}`,
+    description,
+    url: "/about",
+  },
+  twitter: {
+    title: `About | ${siteConfig.name}`,
+    description,
+  },
+};
 
 export default function About() {
   return (

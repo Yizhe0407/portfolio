@@ -1,6 +1,28 @@
 import PageDivider from "@/components/layout/PageDivider";
 import SectionContainer from "@/components/layout/SectionContainer";
 import ProjectsSection from "@/components/sections/ProjectsSection";
+import type { Metadata } from "next";
+import { siteConfig } from "@/lib/site";
+
+const description =
+  "Browse selected projects by Liao Yizhe, featuring full-stack builds, UI experiments, and end-to-end product work.";
+
+export const metadata: Metadata = {
+  title: "Project",
+  description,
+  alternates: {
+    canonical: "/project",
+  },
+  openGraph: {
+    title: `Project | ${siteConfig.name}`,
+    description,
+    url: "/project",
+  },
+  twitter: {
+    title: `Project | ${siteConfig.name}`,
+    description,
+  },
+};
 
 export default function Project() {
   return (
