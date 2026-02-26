@@ -1,9 +1,8 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { siteConfig } from "@/lib/site";
 import { resumeProfile } from "@/data/resume";
-
-export const runtime = "edge";
-export const dynamic = "force-dynamic";
 
 export const size = {
   width: 1200,
@@ -12,82 +11,25 @@ export const size = {
 
 export const contentType = "image/png";
 
-
-const comicReliefRegular = fetch(
-  new URL("./assets/fonts/comic-relief-400.ttf", import.meta.url)
-).then((response) => response.arrayBuffer());
-
-const comicReliefBold = fetch(
-  new URL("./assets/fonts/comic-relief-700.ttf", import.meta.url)
-).then((response) => response.arrayBuffer());
-
-const avatarImage = fetch(
-  new URL("./assets/avatar.png", import.meta.url)
-).then((response) => response.arrayBuffer());
-
-const toBase64 = (data: ArrayBuffer) => {
-  if (typeof Buffer !== "undefined") {
-    return Buffer.from(data).toString("base64");
-  }
-
-  let binary = "";
-  const bytes = new Uint8Array(data);
-  const chunkSize = 0x8000;
-
-  for (let i = 0; i < bytes.length; i += chunkSize) {
-    binary += String.fromCharCode(
-      ...bytes.subarray(i, i + chunkSize)
-    );
-  }
-
-  return btoa(binary);
-};
-
 export default async function OpenGraphImage() {
+  const assetsDir = join(process.cwd(), "src/assets");
+  const fontsDir = join(assetsDir, "fonts");
+  const publicDir = join(process.cwd(), "public");
+
+  const [regularFont, boldFont, avatarBuffer] = await Promise.all([
+    readFile(join(fontsDir, "comic-relief-400.ttf")),
+    readFile(join(fontsDir, "comic-relief-700.ttf")),
+    readFile(join(publicDir, "avatar.png")),
+  ]);
+
+  const avatarSrc = `data:image/png;base64,${avatarBuffer.toString("base64")}`;
   const displayUrl = siteConfig.url.replace(/^https?:\/\//, "");
   const tagline =
     "Building end-to-end solutions with modern tech stacks.";
   const subTagline =
     "From database architecture to seamless user interfaces.";
-  let fonts: Array<{
-    name: string;
-    data: ArrayBuffer;
-    weight: 400 | 700;
-    style: "normal";
-  }> = [];
 
-  try {
-    const [regular, bold] = await Promise.all([
-      comicReliefRegular,
-      comicReliefBold,
-    ]);
-    fonts = [
-      {
-        name: "Comic Relief",
-        data: regular,
-        weight: 400,
-        style: "normal",
-      },
-      {
-        name: "Comic Relief",
-        data: bold,
-        weight: 700,
-        style: "normal",
-      },
-    ];
-  } catch {
-    fonts = [];
-  }
-
-  let avatarSrc = "";
-  try {
-    const avatarData = await avatarImage;
-    avatarSrc = `data:image/png;base64,${toBase64(avatarData)}`;
-  } catch {
-    avatarSrc = "";
-  }
-
-  const content = (
+  return new ImageResponse(
     <div
       style={{
         position: "relative",
@@ -173,38 +115,18 @@ export default async function OpenGraphImage() {
                 justifyContent: "center",
               }}
             >
-              {avatarSrc ? (
-                <img
-                  src={avatarSrc}
-                  alt={siteConfig.name}
-                  width={120}
-                  height={120}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    display: "block",
-                  }}
-                />
-              ) : (
-                <div
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "#a1a1aa",
-                    fontSize: 22,
-                    fontWeight: 700,
-                  }}
-                >
-                  {siteConfig.name
-                    .split(" ")
-                    .map((part) => part[0])
-                    .join("")}
-                </div>
-              )}
+              <img
+                src={avatarSrc}
+                alt={siteConfig.name}
+                width={120}
+                height={120}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               <div
@@ -262,17 +184,23 @@ export default async function OpenGraphImage() {
             </div>
           </div>
         </div>
-      </div>
+      </div>,
+    {
+      ...size,
+      fonts: [
+        {
+          name: "Comic Relief",
+          data: regularFont,
+          weight: 400 as const,
+          style: "normal" as const,
+        },
+        {
+          name: "Comic Relief",
+          data: boldFont,
+          weight: 700 as const,
+          style: "normal" as const,
+        },
+      ],
+    }
   );
-
-  try {
-    return new ImageResponse(content, {
-      ...size,
-      fonts,
-    });
-  } catch {
-    return new ImageResponse(content, {
-      ...size,
-    });
-  }
 }

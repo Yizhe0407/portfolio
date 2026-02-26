@@ -22,7 +22,7 @@ export default function ProjectCard({
 }: ProjectCardProps) {
   const TitleTag: ElementType = titleAs;
   const mediaClassName = cn(
-    "relative aspect-3/2 w-full overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-100",
+    "relative aspect-3/2 w-full overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-100 group",
     reversed ? "lg:order-2" : ""
   );
 
@@ -45,7 +45,7 @@ export default function ProjectCard({
               alt={project.imageAlt ?? project.title}
               fill
               sizes="(min-width: 1024px) 330px, 100vw"
-              className="object-cover"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
         ) : (
@@ -64,7 +64,7 @@ export default function ProjectCard({
           <TitleTag className="text-lg font-semibold text-zinc-900 sm:text-xl">
             {project.title}
           </TitleTag>
-          <p className="clamp-4 text-sm leading-7 text-zinc-500 sm:text-base">
+          <p className="line-clamp-4 text-sm leading-7 text-zinc-500 sm:text-base">
             {project.summary}
           </p>
           <button

@@ -47,8 +47,8 @@ export default function ProjectDialog({
     </div>
   );
 
-  const hasGithubLink = Boolean(project.githubUrl && project.githubUrl !== "#");
-  const hasLiveLink = Boolean(project.liveUrl && project.liveUrl !== "#");
+  const hasGithubLink = Boolean(project.githubUrl);
+  const hasLiveLink = Boolean(project.liveUrl);
   const actionButtons =
     hasGithubLink || hasLiveLink ? (
       <div className="flex flex-wrap gap-3">

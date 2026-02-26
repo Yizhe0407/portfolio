@@ -4,6 +4,7 @@ import { Award } from "lucide-react";
 import { contests } from "@/data/contests";
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site";
+import AnimatedSection from "@/components/ui/AnimatedSection";
 
 const description =
   "Learn more about Liao Yizhe, a full-stack developer focused on building thoughtful web experiences and solving real-world problems.";
@@ -25,12 +26,36 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: siteConfig.url,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "About",
+      item: `${siteConfig.url}/about`,
+    },
+  ],
+};
+
 export default function About() {
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <main className="relative pt-28">
         <PageDivider />
 
+        <AnimatedSection>
         <SectionContainer className="flex flex-col">
           <section className="space-y-4 sm:space-y-5">
             <h1 className="text-3xl font-semibold text-zinc-900 sm:text-4xl">
@@ -57,9 +82,11 @@ export default function About() {
             </div>
           </section>
         </SectionContainer>
+        </AnimatedSection>
 
         <PageDivider />
 
+        <AnimatedSection delay={0.05}>
         <SectionContainer className="flex flex-col">
           <section className="space-y-6 sm:space-y-8">
             <div className="space-y-3">
@@ -106,6 +133,7 @@ export default function About() {
             </div>
           </section>
         </SectionContainer>
+        </AnimatedSection>
       </main>
     </div>
   );

@@ -1,6 +1,6 @@
 import PageDivider from "@/components/layout/PageDivider";
 import SectionContainer from "@/components/layout/SectionContainer";
-import ProjectsSection from "@/components/sections/ProjectsSection";
+import ProjectsSection from "./_components/ProjectsSection";
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site";
 
@@ -24,9 +24,32 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: siteConfig.url,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Projects",
+      item: `${siteConfig.url}/project`,
+    },
+  ],
+};
+
 export default function Project() {
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <main className="relative pt-28">
         <PageDivider />
 

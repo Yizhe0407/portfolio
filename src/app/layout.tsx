@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Comic_Relief } from "next/font/google";
+import { comicRelief, openHuninn } from "@/lib/fonts";
 import Navbar from "@/components/layout/Navbar";
 import DashedFrame from "@/components/layout/DashedFrame";
 import Footer from "@/components/layout/Footer";
@@ -58,14 +58,10 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
-
-const comicRelief = Comic_Relief({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-comic-relief",
-});
 
 export default function RootLayout({
   children,
@@ -73,12 +69,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="icon" href="/favicon.ico" />
-      </head>
+    <html lang="zh-TW">
+
       <body
-        className={`${comicRelief.className} ${comicRelief.variable} antialiased`}
+        className={`${comicRelief.className} ${comicRelief.variable} ${openHuninn.variable} antialiased`}
       >
         <div className="relative min-h-screen">
           <DashedFrame />

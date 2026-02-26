@@ -3,7 +3,6 @@ import {
   ArrowUpRight,
   Award,
   BriefcaseBusiness,
-  Download,
   Github,
   GraduationCap,
   Mail,
@@ -26,6 +25,9 @@ import {
 } from "@/data/resume";
 import { socialLinks } from "@/lib/social-links";
 import { siteConfig } from "@/lib/site";
+import AnimatedSection from "@/components/ui/AnimatedSection";
+import DownloadButton from "./_components/DownloadButton";
+import CopyField from "./_components/CopyField";
 
 const description =
   "View the resume of Liao Yizhe, a full-stack developer with experience in modern web development, systems, and collaboration.";
@@ -47,6 +49,25 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: siteConfig.url,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Resume",
+      item: `${siteConfig.url}/resume`,
+    },
+  ],
+};
+
 const selectedProjects =
   featuredProjects.length > 0 ? featuredProjects : projects.slice(0, 2);
 const cardBase =
@@ -55,10 +76,15 @@ const cardBase =
 export default function Resume() {
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <main className="relative pt-28">
         <PageDivider />
 
         <SectionContainer className="flex flex-col gap-6 sm:gap-8">
+          <AnimatedSection>
           <section className="space-y-4">
             <div className="space-y-2">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">
@@ -76,14 +102,7 @@ export default function Resume() {
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
-              <a
-                href="/resume.pdf"
-                download
-                className="inline-flex items-center gap-2 rounded-lg border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-700 transition hover:-translate-y-0.5 hover:border-zinc-400 hover:text-zinc-900"
-              >
-                Download PDF
-                <Download size={16} />
-              </a>
+              <DownloadButton />
               <a
                 href={`mailto:${resumeProfile.email}`}
                 className="inline-flex items-center gap-2 rounded-lg border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-700 transition hover:-translate-y-0.5 hover:border-zinc-400 hover:text-zinc-900"
@@ -93,7 +112,9 @@ export default function Resume() {
               </a>
             </div>
           </section>
+          </AnimatedSection>
 
+          <AnimatedSection delay={0.1}>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <section className={cardBase}>
               <div className="flex items-center gap-2 text-base font-semibold text-zinc-900">
@@ -109,22 +130,12 @@ export default function Resume() {
                 ) : null}
                 <div className="flex items-center gap-2">
                   <Mail size={16} className="text-zinc-400" />
-                  <a
-                    href={`mailto:${resumeProfile.email}`}
-                    className="hover:text-zinc-700"
-                  >
-                    {resumeProfile.email}
-                  </a>
+                  <CopyField value={resumeProfile.email} />
                 </div>
                 {resumeProfile.phone ? (
                   <div className="flex items-center gap-2">
                     <Phone size={16} className="text-zinc-400" />
-                    <a
-                      href={`tel:${resumeProfile.phone}`}
-                      className="hover:text-zinc-700"
-                    >
-                      {resumeProfile.phone}
-                    </a>
+                    <CopyField value={resumeProfile.phone} />
                   </div>
                 ) : null}
                 {resumeProfile.handle ? (
@@ -214,7 +225,9 @@ export default function Resume() {
               </div>
             </section>
           </div>
+          </AnimatedSection>
 
+          <AnimatedSection delay={0.15}>
           <div className="space-y-5">
             <section className={cardBase}>
               <div className="flex items-center gap-3">
@@ -348,6 +361,7 @@ export default function Resume() {
               </div>
             </section>
           </div>
+          </AnimatedSection>
         </SectionContainer>
       </main>
     </div>

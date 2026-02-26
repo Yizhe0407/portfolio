@@ -7,7 +7,7 @@ export const siteConfig = {
     "Full-stack developer focused on building end-to-end products with modern web technologies, from system design to polished interfaces.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? fallbackUrl,
   ogImage: "/opengraph-image",
-  locale: "en_US",
+  locale: "zh_TW",
   keywords: [
     "Liao Yizhe",
     "Yizhe Liao",

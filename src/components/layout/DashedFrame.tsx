@@ -10,7 +10,7 @@ const verticalDash = {
 
 export default function DashedFrame() {
   return (
-    <div className="pointer-events-none absolute inset-0 hidden md:block">
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden md:block">
       <Container className="relative h-full">
         <div className="absolute left-0 top-0 h-full w-0.5" style={verticalDash} />
         <div className="absolute right-0 top-0 h-full w-0.5" style={verticalDash} />

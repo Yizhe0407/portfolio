@@ -2,7 +2,7 @@ export type ResumeProfile = {
   name: string;
   title: string;
   summary: string;
-  location: string;
+  location?: string;
   email: string;
   phone?: string;
   handle?: string;
@@ -32,7 +32,6 @@ export const resumeProfile: ResumeProfile = {
   title: "Full-stack Developer",
   summary:
     "Driven by curiosity and a passion for technology, I am currently focusing on mastering frontend and backend development. I enjoy the process of exploring how different technologies work together and using code to bring creative ideas to life.",
-  location: "",
   email: "liaoyizhe75@gmail.com",
   phone: "+886-908-297-576",
   handle: "Yizhe0407",
