@@ -9,7 +9,7 @@ export const contests: Contest[] = [
   {
     year: "2026",
     title: "ITSA 生成式 AI 應用網頁設計競賽 - 決賽",
-    result: "待公布",
+    result: "佳作",
     highlights: [
       "技術實踐：運用 PHP PDO、MySQL 與 JavaScript 快速建構具備物件導向（OOP）架構的 Full-stack 網頁系統。",
       "AI 策略優化：開發高效 AI Prompt 策略，實現精準的 UI/UX 視覺還原與自動化前後端驗證，大幅提升 50% 以上的開發速度。",
