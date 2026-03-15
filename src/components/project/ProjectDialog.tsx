@@ -32,7 +32,7 @@ export default function ProjectDialog({
   if (!project) return null;
 
   const imageContent = project.imageSrc ? (
-    <div className="relative aspect-16/10 w-full overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-100">
+    <div className="relative aspect-3/2 w-full overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-100">
       <Image
         src={project.imageSrc}
         alt={project.imageAlt ?? project.title}
@@ -42,7 +42,7 @@ export default function ProjectDialog({
       />
     </div>
   ) : (
-    <div className="flex aspect-16/10 w-full items-center justify-center rounded-2xl border border-zinc-200 bg-zinc-100 text-xs font-semibold text-zinc-400">
+    <div className="flex aspect-3/2 w-full items-center justify-center rounded-2xl border border-zinc-200 bg-zinc-100 text-xs font-semibold text-zinc-400">
       Project Image
     </div>
   );

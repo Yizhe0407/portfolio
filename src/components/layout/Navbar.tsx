@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 const navLinks = [
   { href: "/about", label: "About" },
   { href: "/project", label: "Project" },
-  { href: "/resume", label: "Resume" },
+  { href: "/blog", label: "Blog" },
 ];
 
 const SCROLL_THRESHOLD = 60;

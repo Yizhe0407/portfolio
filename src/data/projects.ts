@@ -7,6 +7,7 @@ export type Project = {
   tech: string[];
   githubUrl?: string;
   liveUrl?: string;
+  // Use a 3:2 cover image. Ideal: 1600x1067px. Minimum: 1200x800px.
   imageSrc?: string;
   imageAlt?: string;
   featured?: boolean;
