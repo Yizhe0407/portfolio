@@ -24,6 +24,7 @@ import {
   resumeProfile,
   resumeSkills,
 } from "@/data/resume";
+import { buildBreadcrumbJsonLd } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site";
 import { socialLinks } from "@/lib/social-links";
 
@@ -49,24 +50,7 @@ export const metadata: Metadata = {
   },
 };
 
-const breadcrumbJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: siteConfig.url,
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "About",
-      item: `${siteConfig.url}/about`,
-    },
-  ],
-};
+const breadcrumbJsonLd = buildBreadcrumbJsonLd("About", "/about");
 
 export default function About() {
   return (

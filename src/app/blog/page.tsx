@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import PageDivider from "@/components/layout/PageDivider";
 import SectionContainer from "@/components/layout/SectionContainer";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import { buildBreadcrumbJsonLd } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site";
 
 const description =
@@ -25,24 +26,7 @@ export const metadata: Metadata = {
   },
 };
 
-const breadcrumbJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: siteConfig.url,
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Blog",
-      item: `${siteConfig.url}/blog`,
-    },
-  ],
-};
+const breadcrumbJsonLd = buildBreadcrumbJsonLd("Blog", "/blog");
 
 export default function BlogPage() {
   return (

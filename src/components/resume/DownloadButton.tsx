@@ -8,6 +8,11 @@ import { cn } from "@/lib/utils";
 
 type State = "idle" | "loading" | "done";
 
+// Simulated loading duration before showing "Downloaded!" confirmation
+const LOADING_DURATION_MS = 900;
+// How long the "Downloaded!" state is shown before resetting
+const DONE_DURATION_MS = 2000;
+
 export default function DownloadButton() {
   const [state, setState] = useState<State>("idle");
 
@@ -20,8 +25,8 @@ export default function DownloadButton() {
     setState("loading");
     setTimeout(() => {
       setState("done");
-      setTimeout(() => setState("idle"), 2000);
-    }, 900);
+      setTimeout(() => setState("idle"), DONE_DURATION_MS);
+    }, LOADING_DURATION_MS);
   };
 
   return (

@@ -77,20 +77,16 @@ export default function ProjectDialog({
       </div>
     ) : null;
 
-  const aboutText = (
-    <p className="text-sm leading-7 text-zinc-500 sm:text-base">
-      {project.about}
-    </p>
-  );
-
-  const desktopDetails = (
+  const projectDetails = (
     <div className="flex flex-col gap-5">
       <div className="space-y-2">
         <h4 className="text-sm font-semibold text-zinc-900 sm:text-base">
           About the Project
         </h4>
-        <ScrollArea className="h-[12.25rem] w-full pr-3">
-          {aboutText}
+        <ScrollArea className="w-full sm:h-[12.25rem] sm:pr-3">
+          <p className="text-sm leading-7 text-zinc-500 sm:text-base">
+            {project.about}
+          </p>
         </ScrollArea>
       </div>
 
@@ -104,43 +100,14 @@ export default function ProjectDialog({
     </div>
   );
 
-  const mobileDetails = (
-    <div className="flex flex-col gap-5">
-      <div className="space-y-2">
-        <h4 className="text-sm font-semibold text-zinc-900 sm:text-base">
-          About the Project
-        </h4>
-        {aboutText}
-      </div>
-
-      <div className="flex flex-wrap gap-2">
-        {project.tech.map((tech) => (
-          <Badge key={tech} variant="muted">
-            {tech}
-          </Badge>
-        ))}
-      </div>
-    </div>
-  );
-
-  const desktopBody = (
+  const projectBody = (
     <div className="max-h-[75vh] overflow-y-auto px-5 pb-6 pt-5 sm:px-6">
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
+      <div className="flex flex-col gap-5 sm:grid sm:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] sm:gap-6">
         <div className="flex flex-col gap-4">
           {imageContent}
           {actionButtons}
         </div>
-        {desktopDetails}
-      </div>
-    </div>
-  );
-
-  const mobileBody = (
-    <div className="max-h-[75vh] overflow-y-auto px-5 pb-6 pt-5 sm:px-6">
-      <div className="flex flex-col gap-5">
-        {imageContent}
-        {actionButtons}
-        {mobileDetails}
+        {projectDetails}
       </div>
     </div>
   );
@@ -163,7 +130,7 @@ export default function ProjectDialog({
               </DialogTitle>
             </div>
           </div>
-          {desktopBody}
+          {projectBody}
         </DialogContent>
       </Dialog>
     );
@@ -182,7 +149,7 @@ export default function ProjectDialog({
             </DrawerTitle>
           </div>
         </div>
-        {mobileBody}
+        {projectBody}
       </DrawerContent>
     </Drawer>
   );

@@ -2,6 +2,7 @@ import PageDivider from "@/components/layout/PageDivider";
 import SectionContainer from "@/components/layout/SectionContainer";
 import ProjectsSection from "./_components/ProjectsSection";
 import type { Metadata } from "next";
+import { buildBreadcrumbJsonLd } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site";
 
 const description =
@@ -24,24 +25,7 @@ export const metadata: Metadata = {
   },
 };
 
-const breadcrumbJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: siteConfig.url,
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Projects",
-      item: `${siteConfig.url}/project`,
-    },
-  ],
-};
+const breadcrumbJsonLd = buildBreadcrumbJsonLd("Projects", "/project");
 
 export default function Project() {
   return (
