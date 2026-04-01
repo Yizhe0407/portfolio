@@ -12,7 +12,7 @@ import { useNavbarScroll } from "@/hooks/use-navbar-scroll";
 const navLinks = [
   { href: "/about", label: "About" },
   { href: "/project", label: "Project" },
-  { href: "/blog", label: "Blog" },
+  { href: "https://blog.yizhe.dev/", label: "Blog" },
 ];
 
 export default function Navbar() {
