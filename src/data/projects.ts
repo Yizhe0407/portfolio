@@ -24,7 +24,7 @@ export const projects: Project[] = [
       "健康照護整合學習歷程平台是一套以 Next.js 15、Express、Prisma 與 MySQL 建置的 Monorepo 全端系統，透過 pnpm workspaces 管理多套件依賴。系統採用 Repository 模式與 Zod 雙層驗證，並整合 MinIO 物件儲存與 Docker-compose 進行高可用性容器化部署。專案遵循 Conventional Commits 與嚴格的 TypeScript 規範，並獨立設計包含測驗、問卷及醫療能力認證 (EPA) 的完整教學模組。",
     tech: ["Next.js 15", "Express", "Prisma", "MySQL", "Zod", "MinIO", "Docker"],
     liveUrl: "https://www.ennova.today/mls",
-    imageSrc: "/projects/ennova.png",
+    imageSrc: "https://portfolio-img.yizhe.dev/ennova.png",
     featured: true,
   },
   {
@@ -38,7 +38,7 @@ export const projects: Project[] = [
     tech: ["Next.js", "MySQL", "Docker", "Node.js"],
     githubUrl: "https://github.com/Yizhe0407/mega-line-reserve",
     liveUrl: "https://mega.yizhe.dev",
-    imageSrc: "/projects/mega.svg",
+    imageSrc: "https://portfolio-img.yizhe.dev/mega.svg",
     featured: true,
   },
   {

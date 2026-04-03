@@ -58,4 +58,4 @@ jobs:
           echo "Deployment verified successfully"
 
       - name: Clean up unused Docker resources
-        run: docker system prune -af
+        run: docker system prune -f --filter "until=72h"

@@ -41,7 +41,7 @@ export default function Home() {
             <section className="relative z-10 flex flex-col items-start gap-7">
               <div className="relative h-33 w-33 overflow-hidden rounded-full border border-zinc-200 bg-white">
                 <Image
-                  src="/avatar.png"
+                  src="https://portfolio-img.yizhe.dev/avatar.png"
                   alt="Liao Yizhe avatar"
                   fill
                   priority

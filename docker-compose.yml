@@ -8,3 +8,11 @@ services:
     environment:
       NODE_ENV: production
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 512M
+        reservations:
+          cpus: "0.25"
+          memory: 128M

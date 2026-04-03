@@ -16,12 +16,13 @@ export default async function OpenGraphImage() {
   const fontsDir = join(assetsDir, "fonts");
   const publicDir = join(process.cwd(), "public");
 
-  const [regularFont, boldFont, avatarBuffer] = await Promise.all([
+  const [regularFont, boldFont, avatarRes] = await Promise.all([
     readFile(join(fontsDir, "comic-relief-400.ttf")),
     readFile(join(fontsDir, "comic-relief-700.ttf")),
-    readFile(join(publicDir, "avatar.png")),
+    fetch("https://portfolio-img.yizhe.dev/avatar.png"),
   ]);
 
+  const avatarBuffer = Buffer.from(await avatarRes.arrayBuffer());
   const avatarSrc = `data:image/png;base64,${avatarBuffer.toString("base64")}`;
   const displayUrl = siteConfig.url.replace(/^https?:\/\//, "");
   const tagline =
