@@ -15,7 +15,7 @@ import type { Metadata } from "next";
 import PageDivider from "@/components/layout/PageDivider";
 import SectionContainer from "@/components/layout/SectionContainer";
 import CopyField from "@/components/resume/CopyField";
-import DownloadButton from "@/components/resume/DownloadButton";
+import ViewCVButton from "@/components/resume/ViewCVButton";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { contests } from "@/data/contests";
 import {
@@ -96,7 +96,7 @@ export default function About() {
               </div>
 
               <div className="flex flex-wrap items-center gap-3">
-                <DownloadButton />
+                <ViewCVButton />
                 <a
                   href={`mailto:${resumeProfile.email}`}
                   className="inline-flex items-center gap-2 rounded-lg border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-700 transition hover:-translate-y-0.5 hover:border-zinc-400 hover:text-zinc-900"
