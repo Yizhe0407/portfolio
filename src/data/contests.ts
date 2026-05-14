@@ -8,6 +8,15 @@ export type Contest = {
 export const contests: Contest[] = [
   {
     year: "2026",
+    title: "教育部技職盃黑客松競賽 - 中區分賽",
+    result: "評審團大獎 (第一名)",
+    highlights: [
+      "系統設計：開發 ECOBOX 校園循環餐盒 PaaS 平台，整合宿舍 IoT 智慧歸還桶與邊緣 AI 視覺辨識，搭配手機門號＋學號雙綁定防詐機制，實現 0 人工介入的校園內閉環逆物流。",
+      "商業模型與永續成效：以 PaaS 4.5 元/次獲利結構低於紙盒成本，並設計點數回饋系統（歸還即得點可折抵宿舍水電費）驅動持續使用，估算相較紙餐盒降低約 78% CO₂ 排放，對齊 SDG 12 永續消費目標。",
+    ],
+  },
+  {
+    year: "2026",
     title: "ITSA 生成式 AI 應用網頁設計競賽 - 決賽",
     result: "佳作",
     highlights: [
