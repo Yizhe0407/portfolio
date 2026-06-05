@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { comicRelief, openHuninn } from "@/lib/fonts";
 import Navbar from "@/components/layout/Navbar";
@@ -70,7 +71,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-TW">
-
+      <Script
+        defer
+        src="https://umami.yizhe.dev/script.js"
+        data-website-id="f87d10ef-0c48-4adb-ba3c-7f9e432933ef"
+        strategy="afterInteractive"
+      />
       <body
         className={`${comicRelief.className} ${comicRelief.variable} ${openHuninn.variable} antialiased`}
       >
