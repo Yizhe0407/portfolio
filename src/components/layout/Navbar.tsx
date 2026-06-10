@@ -26,7 +26,7 @@ export default function Navbar() {
     <motion.nav
       aria-label="Main navigation"
       style={{ y: yVal, opacity: opacityVal }}
-      className="flex w-92.5 sm:w-95 mx-auto items-center h-18 border rounded-3xl px-5 sm:px-6 py-4 bg-white/95"
+      className="flex w-[min(23.125rem,100%_-_1.25rem)] sm:w-95 mx-auto items-center h-18 border rounded-3xl px-5 sm:px-6 py-4 bg-white/95"
     >
       <div className="flex w-full items-center">
         <div className="flex items-center gap-6">

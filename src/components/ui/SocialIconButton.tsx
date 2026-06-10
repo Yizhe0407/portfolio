@@ -9,8 +9,8 @@ export const socialIconButtonVariants = cva(
   {
     variants: {
       size: {
-        default: "h-10 w-10",
-        sm: "h-9 w-9",
+        default: "h-11 w-11",
+        sm: "h-10 w-10",
       },
     },
     defaultVariants: {

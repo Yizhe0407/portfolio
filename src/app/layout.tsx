@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.css";
 import { comicRelief, openHuninn } from "@/lib/fonts";
@@ -6,6 +6,13 @@ import Navbar from "@/components/layout/Navbar";
 import DashedFrame from "@/components/layout/DashedFrame";
 import Footer from "@/components/layout/Footer";
 import { siteConfig } from "@/lib/site";
+
+// viewport-fit=cover 讓 env(safe-area-inset-*) 在 iOS 取得實際值（瀏海/Home indicator）
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),

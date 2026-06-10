@@ -18,7 +18,7 @@ export default function CopyField({ value }: CopyFieldProps) {
         type="button"
         onClick={() => copy(value)}
         title={copied ? "Copied!" : "Copy"}
-        className="text-zinc-400 opacity-0 transition-opacity group-hover:opacity-100"
+        className="-m-2 p-2 text-zinc-400 opacity-0 transition-opacity group-hover:opacity-100 focus-visible:opacity-100 [@media(pointer:coarse)]:opacity-100"
       >
         {copied ? <Check size={12} /> : <Copy size={12} />}
       </button>

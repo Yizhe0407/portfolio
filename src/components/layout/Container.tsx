@@ -12,7 +12,7 @@ export default function Container({
   return (
     <div
       className={cn(
-        "mx-auto w-full max-w-[370px] sm:max-w-[616px] lg:max-w-[1052px] z-10",
+        "mx-auto w-full max-w-[min(370px,100%_-_1.25rem)] sm:max-w-[616px] lg:max-w-[1052px] z-10",
         noPadding ? "" : "px-6 sm:px-10",
         className
       )}

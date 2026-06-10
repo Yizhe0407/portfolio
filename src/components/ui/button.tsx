@@ -44,12 +44,13 @@ const buttonVariants = cva(
  * elements so the visual style stays in one place.
  */
 export const outlineButtonVariants = cva(
-  "inline-flex w-fit shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-zinc-300 font-medium text-zinc-700 transition hover:-translate-y-0.5 hover:border-zinc-400 hover:text-zinc-900",
+  // after 偽元素垂直外擴觸控範圍至 ≥44px，不影響視覺尺寸
+  "relative inline-flex w-fit shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-zinc-300 font-medium text-zinc-700 transition hover:-translate-y-0.5 hover:border-zinc-400 hover:text-zinc-900 after:absolute after:inset-x-0",
   {
     variants: {
       size: {
-        default: "px-4 py-2 text-sm",
-        sm: "gap-1.5 px-3 py-1.5 text-[13px]",
+        default: "px-4 py-2 text-sm after:-inset-y-1",
+        sm: "gap-1.5 px-3 py-1.5 text-[13px] after:-inset-y-1.5",
       },
     },
     defaultVariants: {
