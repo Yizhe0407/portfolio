@@ -1,7 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import PageDivider from "@/components/layout/PageDivider";
-import SectionContainer from "@/components/layout/SectionContainer";
 
 export const metadata: Metadata = {
   title: "Page Not Found",
@@ -11,22 +10,42 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen">
-      <main className="relative pt-28">
-        <PageDivider />
-        <SectionContainer className="flex flex-col items-center gap-6 text-center">
-          <h1 className="text-6xl font-semibold text-zinc-900">404</h1>
-          <p className="text-base text-zinc-500">
-            Sorry, we couldn&apos;t find that page
-          </p>
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 rounded-lg border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-700 transition hover:-translate-y-0.5 hover:border-zinc-400 hover:text-zinc-900"
+    <main className="grid min-h-screen grid-cols-[auto_auto] content-center justify-center justify-items-center gap-y-4 px-6 py-16">
+      <Image
+        src="/404.svg"
+        alt=""
+        width={909}
+        height={973}
+        priority
+        className="w-36 self-center md:row-span-2 md:w-72"
+      />
+      <div className="flex items-center gap-3 self-center">
+          <div className="flex flex-col items-center">
+            <h1 className="text-6xl font-bold leading-none tracking-tight text-zinc-900 md:text-8xl">
+              404
+            </h1>
+            <p className="text-2xl font-bold uppercase tracking-widest text-zinc-700 md:text-4xl">
+              Error
+            </p>
+          </div>
+          <span
+            aria-hidden
+            className="text-[6rem] font-bold leading-none text-zinc-900 md:text-[9rem]"
           >
-            Back to Home
-          </Link>
-        </SectionContainer>
-      </main>
-    </div>
+            !
+          </span>
+      </div>
+      <div className="col-span-2 flex flex-col items-center gap-4 text-center md:col-span-1 md:col-start-2">
+        <p className="text-base text-zinc-500">
+          Sorry, the page  not found
+        </p>
+        <Link
+          href="/"
+          className="mt-2 inline-flex items-center gap-2 rounded-lg border border-zinc-300 px-5 py-2.5 text-sm font-medium text-zinc-700 transition hover:-translate-y-0.5 hover:border-zinc-400 hover:text-zinc-900"
+        >
+          Back to Home
+        </Link>
+      </div>
+    </main>
   );
 }
