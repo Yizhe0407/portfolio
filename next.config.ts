@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   output: "standalone",
   poweredByHeader: false,
   experimental: {
-    optimizePackageImports: ["lucide-react"],
+    optimizePackageImports: ["lucide-react", "react-icons"],
   },
   images: {
     formats: ["image/avif", "image/webp"],

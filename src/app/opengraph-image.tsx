@@ -14,7 +14,6 @@ export const contentType = "image/png";
 export default async function OpenGraphImage() {
   const assetsDir = join(process.cwd(), "src/assets");
   const fontsDir = join(assetsDir, "fonts");
-  const publicDir = join(process.cwd(), "public");
 
   const [regularFont, boldFont, avatarRes] = await Promise.all([
     readFile(join(fontsDir, "comic-relief-400.ttf")),

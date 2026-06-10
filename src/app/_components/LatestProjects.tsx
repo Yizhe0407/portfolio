@@ -1,10 +1,16 @@
 "use client";
 
-import ProjectDialog from "@/components/project/ProjectDialog";
+import dynamic from "next/dynamic";
 import ProjectCard from "@/components/project/ProjectCard";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { useProjectDialog } from "@/hooks/use-project-dialog";
 import { latestProjects } from "@/data/projects";
+
+// Dialog 開啟前不需要，延遲載入讓 dialog/drawer 相依移出首載 bundle
+const ProjectDialog = dynamic(
+  () => import("@/components/project/ProjectDialog"),
+  { ssr: false }
+);
 
 export default function LatestProjectsSection() {
   const { activeProject, open, openProject, closeProject } = useProjectDialog();

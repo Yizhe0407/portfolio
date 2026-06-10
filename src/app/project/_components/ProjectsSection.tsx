@@ -1,13 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { AnimatePresence, motion } from "framer-motion";
-import ProjectDialog from "@/components/project/ProjectDialog";
 import ProjectCard from "@/components/project/ProjectCard";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { useProjectDialog } from "@/hooks/use-project-dialog";
 import { cn } from "@/lib/utils";
 import { projects } from "@/data/projects";
+
+// Dialog 開啟前不需要，延遲載入讓 dialog/drawer 相依移出首載 bundle
+const ProjectDialog = dynamic(
+  () => import("@/components/project/ProjectDialog"),
+  { ssr: false }
+);
 
 const ALL = "All";
 
