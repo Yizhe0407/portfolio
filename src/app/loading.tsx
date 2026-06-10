@@ -13,7 +13,7 @@ export default function Loading() {
 
         <SectionContainer className="flex flex-col">
           <section className="relative z-10 flex flex-col items-start gap-7">
-            <Skeleton className="h-[132px] w-[132px] rounded-full" />
+            <Skeleton className="h-33 w-33 rounded-full" />
 
             <div className="w-full max-w-xl space-y-3">
               <Skeleton className="h-10 w-full max-w-[340px] sm:max-w-[420px]" />
@@ -23,11 +23,8 @@ export default function Loading() {
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
-              {Array.from({ length: 3 }).map((_, index) => (
-                <Skeleton
-                  key={index}
-                  className="h-10 w-28 rounded-xl sm:w-32"
-                />
+              {Array.from({ length: 4 }).map((_, index) => (
+                <Skeleton key={index} className="h-10 w-10 rounded-xl" />
               ))}
             </div>
           </section>
@@ -68,7 +65,7 @@ export default function Loading() {
 
           <div className="flex flex-col gap-8">
             <ProjectCardSkeleton />
-            <ProjectCardSkeleton reversed />
+            <ProjectCardSkeleton />
           </div>
         </SectionContainer>
       </main>

@@ -1,12 +1,7 @@
 import Container from "@/components/layout/Container";
+import { dashColor, dashedRuleStyle } from "@/components/layout/SectionDivider";
 
-const dashColor = "rgba(161, 161, 170, 0.8)";
-const dashLength = 10;
-const dashGap = 16;
-const dashTotal = dashLength + dashGap;
-const verticalDash = {
-  backgroundImage: `repeating-linear-gradient(to bottom, ${dashColor} 0 ${dashLength}px, transparent ${dashLength}px ${dashTotal}px)`,
-};
+const verticalDash = dashedRuleStyle(dashColor, 10, 16, "to bottom");
 
 export default function DashedFrame() {
   return (

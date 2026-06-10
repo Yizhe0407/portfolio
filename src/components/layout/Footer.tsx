@@ -17,7 +17,7 @@ export default function Footer() {
             </a>
           ))}
         </nav>
-        <p className="text-base p-3 text-neutral-400">
+        <p className="text-base p-3 text-zinc-400">
           Copyright © {new Date().getFullYear()} Liao Yizhe - All rights reserved
         </p>
     </footer>

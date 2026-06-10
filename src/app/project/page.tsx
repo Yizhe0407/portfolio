@@ -1,5 +1,6 @@
 import PageDivider from "@/components/layout/PageDivider";
 import SectionContainer from "@/components/layout/SectionContainer";
+import SectionDivider from "@/components/layout/SectionDivider";
 import ProjectsSection from "./_components/ProjectsSection";
 import type { Metadata } from "next";
 import { buildBreadcrumbJsonLd } from "@/lib/metadata";
@@ -50,6 +51,8 @@ export default function Project() {
               </p>
             </div>
           </section>
+
+          <SectionDivider />
 
           <ProjectsSection />
         </SectionContainer>

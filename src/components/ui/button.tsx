@@ -38,6 +38,26 @@ const buttonVariants = cva(
   }
 )
 
+/**
+ * Shared "outline pill" link/button look used across the site (CV, Contact,
+ * View Projects, project card/dialog actions). Use with `cn()` on `<a>`/`<button>`
+ * elements so the visual style stays in one place.
+ */
+export const outlineButtonVariants = cva(
+  "inline-flex w-fit shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-zinc-300 font-medium text-zinc-700 transition hover:-translate-y-0.5 hover:border-zinc-400 hover:text-zinc-900",
+  {
+    variants: {
+      size: {
+        default: "px-4 py-2 text-sm",
+        sm: "gap-1.5 px-3 py-1.5 text-[13px]",
+      },
+    },
+    defaultVariants: {
+      size: "default",
+    },
+  }
+)
+
 function Button({
   className,
   variant = "default",

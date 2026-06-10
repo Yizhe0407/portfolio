@@ -1,43 +1,24 @@
 import { Skeleton } from "@/components/ui/skeleton";
-import { cn } from "@/lib/utils";
 
-type ProjectCardSkeletonProps = {
-  reversed?: boolean;
-};
-
-export default function ProjectCardSkeleton({
-  reversed = false,
-}: ProjectCardSkeletonProps) {
+export default function ProjectCardSkeleton() {
   return (
-    <article className="rounded-[28px] border border-zinc-200 bg-white p-3">
-      <div
-        className={cn(
-          "grid gap-6 lg:justify-center lg:gap-8",
-          reversed
-            ? "lg:grid-cols-[minmax(0,380px)_330px]"
-            : "lg:grid-cols-[330px_minmax(0,380px)]"
-        )}
-      >
-        <Skeleton
-          className={cn(
-            "aspect-3/2 w-full rounded-2xl",
-            reversed ? "lg:order-2" : ""
-          )}
-        />
+    <article className="rounded-2xl border border-zinc-200 bg-white p-3.5">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-stretch sm:gap-4 lg:gap-5">
+        <Skeleton className="aspect-3/2 w-full shrink-0 rounded-lg sm:w-[160px] sm:self-start md:w-[210px] lg:w-[260px]" />
 
-        <div
-          className={cn(
-            "flex h-full flex-col justify-between gap-4 py-1",
-            reversed ? "lg:order-1" : ""
-          )}
-        >
-          <div className="space-y-3">
-            <Skeleton className="h-7 w-40 sm:w-52" />
+        <div className="flex min-w-0 flex-1 flex-col gap-2.5 sm:gap-3">
+          <div className="flex flex-col gap-1.5">
+            <Skeleton className="h-5 w-2/3 max-w-48" />
             <Skeleton className="h-4 w-full" />
-            <Skeleton className="h-4 w-[92%]" />
-            <Skeleton className="h-4 w-[78%]" />
+            <Skeleton className="h-4 w-[90%]" />
           </div>
-          <Skeleton className="h-10 w-32 rounded-lg" />
+          <div className="mt-auto flex flex-wrap items-center justify-between gap-2">
+            <div className="flex flex-wrap gap-1.5">
+              <Skeleton className="h-[22px] w-16 rounded-full" />
+              <Skeleton className="h-[22px] w-14 rounded-full" />
+            </div>
+            <Skeleton className="h-8 w-16 rounded-lg" />
+          </div>
         </div>
       </div>
     </article>

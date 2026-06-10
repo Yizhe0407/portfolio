@@ -1,31 +1,22 @@
 "use client";
 
-import { useState } from "react";
 import { Check, Copy } from "lucide-react";
+
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 
 interface CopyFieldProps {
   value: string;
 }
 
 export default function CopyField({ value }: CopyFieldProps) {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(value);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      // Copy failed (e.g. permissions denied or insecure context)
-    }
-  };
+  const { copied, copy } = useCopyToClipboard();
 
   return (
     <span className="group flex items-center gap-1.5">
       <span>{value}</span>
       <button
         type="button"
-        onClick={handleCopy}
+        onClick={() => copy(value)}
         title={copied ? "Copied!" : "Copy"}
         className="text-zinc-400 opacity-0 transition-opacity group-hover:opacity-100"
       >

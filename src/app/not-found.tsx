@@ -17,7 +17,7 @@ export default function NotFound() {
         <SectionContainer className="flex flex-col items-center gap-6 text-center">
           <h1 className="text-6xl font-semibold text-zinc-900">404</h1>
           <p className="text-base text-zinc-500">
-            The page you&apos;re looking for doesn&apos;t exist.
+            Sorry, we couldn&apos;t find that page
           </p>
           <Link
             href="/"

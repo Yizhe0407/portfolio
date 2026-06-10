@@ -54,13 +54,13 @@ export default function Home() {
                 <h1
                   className={`text-[34px] font-semibold tracking-tight text-zinc-900 sm:text-[40px] ${pacifico.className}`}
                 >
-                  Hey, I&apos;m Liao Yizhe.
+                  Hey, I&apos;m Liao Yizhe
                   <br />
                   Full-Stack Developer
                 </h1>
-                <p className="max-w-xl text-sm leading-6 text-neutral-500 sm:text-base">
-                  Building end-to-end solutions with modern tech stacks. From
-                  database architecture to seamless user interfaces.
+                <p className="max-w-xl text-sm leading-6 text-zinc-500 sm:text-base">
+                  Building end-to-end solutions with modern tech stacks.<br />
+                  From database architecture to seamless user interfaces.
                 </p>
               </div>
 

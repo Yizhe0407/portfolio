@@ -1,9 +1,11 @@
 import Image from "next/image";
-import { Github, Globe2 } from "lucide-react";
+import { Github, Globe2, X } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
+import { outlineButtonVariants } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogTitle,
 } from "@/components/ui/dialog";
@@ -14,13 +16,36 @@ import {
 } from "@/components/ui/drawer";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useMediaQuery } from "@/hooks/use-media-query";
+import SectionDivider from "@/components/layout/SectionDivider";
 import type { Project } from "@/data/projects";
+
+const closeButtonClassName =
+  "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-zinc-500 transition hover:bg-zinc-100 hover:text-zinc-900";
 
 type ProjectDialogProps = {
   project: Project | null;
   open: boolean;
   onClose: () => void;
 };
+
+function ProjectEyebrowTitle({
+  title,
+  as: TitleComponent,
+}: {
+  title: string;
+  as: typeof DialogTitle | typeof DrawerTitle;
+}) {
+  return (
+    <>
+      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">
+        Project
+      </p>
+      <TitleComponent className="text-xl font-semibold text-zinc-900 sm:text-2xl">
+        {title}
+      </TitleComponent>
+    </>
+  );
+}
 
 export default function ProjectDialog({
   project,
@@ -57,7 +82,7 @@ export default function ProjectDialog({
             href={project.githubUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-700 transition hover:-translate-y-0.5 hover:border-zinc-400 hover:text-zinc-900"
+            className={outlineButtonVariants()}
           >
             <Github size={16} />
             View on GitHub
@@ -68,7 +93,7 @@ export default function ProjectDialog({
             href={project.liveUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-700 transition hover:-translate-y-0.5 hover:border-zinc-400 hover:text-zinc-900"
+            className={outlineButtonVariants()}
           >
             <Globe2 size={16} />
             Visit Website
@@ -119,17 +144,20 @@ export default function ProjectDialog({
   if (isDesktop) {
     return (
       <Dialog open={open} onOpenChange={handleOpenChange}>
-        <DialogContent className="sm:max-w-3xl rounded-3xl p-0">
-          <div className="flex items-start justify-between gap-4 border-b border-zinc-100 px-5 py-4 sm:px-6">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">
-                Project
-              </p>
-              <DialogTitle className="text-xl font-semibold text-zinc-900 sm:text-2xl">
-                {project.title}
-              </DialogTitle>
+        <DialogContent
+          className="sm:max-w-3xl rounded-3xl p-0"
+          showCloseButton={false}
+        >
+          <div className="flex items-start justify-between gap-4 px-5 pb-3 pt-[18px] sm:px-6 sm:pb-3.5 sm:pt-5">
+            <div className="min-w-0 flex-1">
+              <ProjectEyebrowTitle title={project.title} as={DialogTitle} />
             </div>
+            <DialogClose className={closeButtonClassName}>
+              <X size={18} />
+              <span className="sr-only">Close</span>
+            </DialogClose>
           </div>
+          <SectionDivider className="mx-5 h-3 sm:mx-6" nodeSize={11} />
           {projectBody}
         </DialogContent>
       </Dialog>
@@ -139,15 +167,8 @@ export default function ProjectDialog({
   return (
     <Drawer open={open} onOpenChange={handleOpenChange}>
       <DrawerContent className="p-0">
-        <div className="flex items-start justify-between gap-4 border-b border-zinc-100 px-5 py-4 sm:px-6">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">
-              Project
-            </p>
-            <DrawerTitle className="text-xl font-semibold text-zinc-900 sm:text-2xl">
-              {project.title}
-            </DrawerTitle>
-          </div>
+        <div className="px-5 pb-1.5 pt-2">
+          <ProjectEyebrowTitle title={project.title} as={DrawerTitle} />
         </div>
         {projectBody}
       </DrawerContent>

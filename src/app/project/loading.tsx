@@ -28,7 +28,7 @@ export default function Loading() {
 
           <div className="flex flex-col gap-6 sm:gap-8">
             <ProjectCardSkeleton />
-            <ProjectCardSkeleton reversed />
+            <ProjectCardSkeleton />
             <ProjectCardSkeleton />
           </div>
         </SectionContainer>
